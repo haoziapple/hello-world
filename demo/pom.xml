@@ -66,6 +66,15 @@
 			<artifactId>swagger-parser</artifactId>
 			<version>2.0.0-rc3</version>
 		</dependency>
+
+		<dependency>
+			<groupId>my-tools</groupId>
+			<artifactId>itext</artifactId>
+			<version>1.0.0</version>
+			<type>jar</type>
+			<scope>system</scope>
+			<systemPath>${basedir}/lib/com.lowagie.text-2.1.7.jar</systemPath>
+		</dependency>
 	</dependencies>
 
 	<build>
