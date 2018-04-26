@@ -21,6 +21,8 @@ public class DemoApplication {
 	@Bean
 	public CommandLineRunner demo(CustomerRepository repository) {
 		return (args) -> {
+			// clean
+			repository.deleteAll();
 			// save a couple of customers
 			repository.save(new Customer("Jack", "Bauer"));
 			repository.save(new Customer("Chloe", "O'Brian"));
