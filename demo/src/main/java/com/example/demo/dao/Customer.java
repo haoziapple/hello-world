@@ -3,8 +3,11 @@ package com.example.demo.dao;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.Date;
 
 //import javax.persistence.Entity;
 //import javax.persistence.GeneratedValue;
@@ -27,6 +30,12 @@ public class Customer {
     private String id;
     private String firstName;
     private String lastName;
+    private Date birth;
+    @CreatedDate
+    private Date createDate;
+
+    private Long timeStamp;
+    private int age;
 
     protected  Customer() {}
 
