@@ -57,8 +57,12 @@ public class TestListCollect {
 
 
         saveList = ebizList.stream()
-                .filter((Entity b) -> !dblist.contains(b))
+                .filter((Entity b) -> {
+                    System.out.println(b);
+                    return !dblist.contains(b);
+                })
                 .collect(Collectors.toList());
+
 
 
         System.out.println(saveList);
