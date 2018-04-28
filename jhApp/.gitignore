@@ -72,7 +72,6 @@ classes/
 ######################
 /log/
 /target/
-/.mvn/wrapper
 
 ######################
 # Gradle
