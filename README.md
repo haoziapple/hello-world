@@ -8,6 +8,10 @@ use as a playground for coding
 
 ## 项目列表
 - jh-app：jhipster生成的前后端一体项目，使用springboot,angular1.5,yeoman,yarn,gulp，值得好好学习
+- demo：使用springboot2.0的学习项目，尝试使用webflux，MongoDB，JPA，itext，java8 lambda
+- beetltest：尝试使用beetl模板引擎
+- yoApp,yoNgApp；使用yeoman生成的前端项目
+- ionicblank,ionic-tutorial,ionic-tutorial,myApp：使用ionic生成的app项目
 
 
 
