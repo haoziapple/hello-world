@@ -1,0 +1,16 @@
+{
+  "name": "try-gulp",
+  "version": "0.0.0",
+  "description": "A project to try gulp",
+  "private": true,
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "gulp": "3.9.1"
+  },
+  "engines": {
+    "node": ">=6.9.0"
+  },
+  "scripts": {
+    "gulp": "gulp"
+  }
+}
