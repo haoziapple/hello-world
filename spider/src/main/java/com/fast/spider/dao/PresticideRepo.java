@@ -5,6 +5,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
+import java.util.List;
+
 /**
  * @author wanghao
  * @Description
@@ -13,4 +15,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 public interface PresticideRepo extends MongoRepository<PresticideDetail, String> {
 
     Page<PresticideDetail> findAllByCertificateCodeLike(Pageable pageable, String certificateCode);
+
+    List<PresticideDetail> findByCertificateCodeLike(String certificateCode);
 }

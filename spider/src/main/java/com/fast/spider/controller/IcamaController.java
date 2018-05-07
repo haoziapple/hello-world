@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * @author wanghao
  * @Description
@@ -31,16 +33,25 @@ public class IcamaController {
 
     @RequestMapping(value = "/getList", method = RequestMethod.GET)
     @ApiOperation("获取证书列表，按有效开始日期降序排序")
-    public Page<PresticideDetail> getList(int page, int size) {
+    public Page<PresticideDetail> getList(Integer page, Integer size) {
         Sort sort = new Sort(Sort.Direction.DESC,"validStartDay");
         return presticideRepo.findAll(PageRequest.of(page, size, sort));
     }
 
     @RequestMapping(value = "/getListByCode", method = RequestMethod.GET)
     @ApiOperation("获取证书列表，按农药登记证号模糊匹配")
-    public Page<PresticideDetail> getListByCode(int page, int size,  String certificateCode) {
+    public Page<PresticideDetail> getListByCode(Integer page, Integer size,  String certificateCode) {
         Sort sort = new Sort(Sort.Direction.DESC,"validStartDay");
         return presticideRepo.findAllByCertificateCodeLike(PageRequest.of(page, size, sort), certificateCode);
+    }
+
+    @RequestMapping(value = "/getListWithoutPage", method = RequestMethod.GET)
+    @ApiOperation("获取证书列表，按农药登记证号模糊匹配，无分页，证号至少6位")
+    public List<PresticideDetail> getListWithoutPage(String certificateCode) {
+        if(certificateCode==null || certificateCode.length() < 6) {
+            throw new IllegalArgumentException("证号至少6位");
+        }
+        return presticideRepo.findByCertificateCodeLike(certificateCode);
     }
 
 
