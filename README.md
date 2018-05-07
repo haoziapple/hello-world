@@ -13,6 +13,7 @@ use as a playground for coding
 - yoApp,yoNgApp；使用yeoman生成的前端项目
 - ionicblank,ionic-tutorial,ionic-tutorial,myApp：使用ionic生成的app项目
 - trygulp：尝试使用gulp的学习项目
+- spider：爬虫项目
 
 
 
