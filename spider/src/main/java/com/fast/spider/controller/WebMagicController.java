@@ -1,7 +1,9 @@
 package com.fast.spider.controller;
 
+import com.fast.spider.dao.PresticideCertRepo;
 import com.fast.spider.dao.PresticideRepo;
 import com.fast.spider.icama.PresticideDetail;
+import com.fast.spider.webmagic.PresticidePipeline;
 import com.fast.spider.webmagic.PresticideProcesser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,18 +24,22 @@ import java.util.List;
 public class WebMagicController {
     @Autowired
     private PresticideRepo presticideRepo;
+    @Autowired
+    private PresticideCertRepo presticideCertRepo;
 
 
     @RequestMapping(value = "startPresticide", method = RequestMethod.GET)
     public void startPresticide() {
-        String baseUrl = "https://www.icama.cn/PublicQuery/pesticide/certificateView.do?r=0.2415489078426829&id=";
         Spider spider = Spider.create(new PresticideProcesser())
+                //保存到本地文件
                 .addPipeline(new JsonFilePipeline("E:\\webmagic\\"))
+                // 保存到mongodb
+                .addPipeline(new PresticidePipeline(presticideCertRepo))
                 //开启5个线程抓取
                 .thread(5);
         List<PresticideDetail> list = presticideRepo.findAll();
         for (PresticideDetail detail : list) {
-            spider.addUrl(baseUrl + detail.getId());
+            spider.addUrl(PresticideProcesser.BASE_URL + detail.getId());
         }
         //启动爬虫
         spider.run();

@@ -12,6 +12,7 @@ import us.codecraft.webmagic.processor.PageProcessor;
  * @date 2018-05-08 10:47
  */
 public class PresticideProcesser implements PageProcessor {
+    public static final String BASE_URL = "https://www.icama.cn/PublicQuery/pesticide/certificateView.do?r=0.2415489078426829&id=";
 
     private Site site = Site.me().setRetryTimes(3).setSleepTime(1000).addCookie("www.icama.cn", "JSESSIONID", "316D0FFF34777EB152D58D68308E7DAB");
     @Override
