@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * @author wanghao
- * @Description
+ * @Description icama网站专用分页bean
  * @date 2018-05-07 14:10
  */
 @Data

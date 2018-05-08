@@ -11,7 +11,6 @@ import lombok.ToString;
  * @date 2018-05-07 14:12
  */
 @Data
-@ToString
 @ApiModel("农药产品信息")
 public class PresticideDetail {
     private String id;
@@ -43,4 +42,30 @@ public class PresticideDetail {
     private String holderName;
     @ApiModelProperty("持有人id")
     private String holderId;
+
+    /**
+     * 为了方便导出mysql脚本，重写了toString方法
+     * @return
+     */
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("(");
+        sb.append("'").append(id).append('\'');
+        sb.append(",'").append(pesticideName).append('\'');
+        sb.append(",'").append(certificateCode).append('\'');
+        sb.append(",'").append(pesticideCategoryCode).append('\'');
+        sb.append(",'").append(pesticideCategory).append('\'');
+        sb.append(",'").append(totalContent).append('\'');
+        sb.append(",'").append(toxicityCode).append('\'');
+        sb.append(",'").append(toxicity).append('\'');
+        sb.append(",'").append(dosageCode).append('\'');
+        sb.append(",'").append(dosage).append('\'');
+        sb.append(",'").append(validStartDay).append('\'');
+        sb.append(",'").append(validLastDay).append('\'');
+        sb.append(",'").append(status).append('\'');
+        sb.append(",'").append(holderName).append('\'');
+        sb.append(",'").append(holderId).append('\'');
+        sb.append("),");
+        return sb.toString();
+    }
 }

@@ -80,7 +80,7 @@ public class SpiderApplication {
                 //描述
                 .description("爬取目标官网：https://www.icama.cn/PublicQuery/index.do")
                 //创建人
-                .contact(new Contact("dev", "", "wanghao@bkrwin.com"))
+                .contact(new Contact("Wang Hao", "", "wanghao@bkrwin.com"))
                 //版本
                 .version("1.0")
                 .build();

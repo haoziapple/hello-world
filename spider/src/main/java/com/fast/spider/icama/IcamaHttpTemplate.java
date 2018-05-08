@@ -36,14 +36,9 @@ public class IcamaHttpTemplate {
                 "sort" + "=" + sort + "&" +
                 "flage" + "=" + flage + "&" +
                 "queryJson={queryJson}";
+        HttpEntity<String> requestEntity = getRequestEntity();
 
-        //请求头设置
-        HttpHeaders requestHeaders = new HttpHeaders();
-        requestHeaders.set("Cookie", "JSESSIONID=E510932B00C982BB8AB7CAB781FC62E8");
-        requestHeaders.set("Host", "www.icama.cn");
-        requestHeaders.set("Upgrade-Insecure-Requests", "1");
-        //设置 签名 查询参数 访问令牌
-        HttpEntity<String> requestEntity = new HttpEntity<String>(null, requestHeaders);
+
         //发起请求
         ResponseEntity<String> responseEntity = restTemplate.exchange(baseUrl + pesticideUrl + queryString, HttpMethod.GET, requestEntity, String.class, queryJson);
 
@@ -53,5 +48,19 @@ public class IcamaHttpTemplate {
         }.getType();
         PageInfo<PresticideDetail> result = gson.fromJson(responseEntity.getBody(), objectType);
         return result;
+    }
+
+    private HttpEntity<String> getRequestEntity() {
+        //请求头设置
+        HttpHeaders requestHeaders = new HttpHeaders();
+        requestHeaders.set("Cookie", "JSESSIONID=E510932B00C982BB8AB7CAB781FC62E8");
+        requestHeaders.set("Host", "www.icama.cn");
+        requestHeaders.set("Upgrade-Insecure-Requests", "1");
+        //设置 签名 查询参数 访问令牌
+        return new HttpEntity<String>(null, requestHeaders);
+    }
+
+    public String getPesticideDetail(String id) {
+        return null;
     }
 }
