@@ -28,7 +28,7 @@ public class WebMagicController {
     private PresticideCertRepo presticideCertRepo;
 
 
-    @RequestMapping(value = "startPresticide", method = RequestMethod.GET)
+//    @RequestMapping(value = "startPresticide", method = RequestMethod.GET)
     public void startPresticide() {
         Spider spider = Spider.create(new PresticideProcesser())
                 //保存到本地文件
