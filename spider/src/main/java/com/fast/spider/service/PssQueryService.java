@@ -28,10 +28,11 @@ public class PssQueryService {
     /**
      * 查询商品信息
      *
-     * @param traceNo
+     * @param qrUrl
      * @return
      */
-    public ProductInfo queryProduct(String traceNo) {
+    public ProductInfo queryProduct(String qrUrl) {
+        String traceNo = qrUrl.substring(WEB_URL.length());
         String queryString = "BOTTLE_NUMBER=" + traceNo;
         // 设置请求头
         HttpEntity<String> requestEntity = new HttpEntity<String>(null, new HttpHeaders());
