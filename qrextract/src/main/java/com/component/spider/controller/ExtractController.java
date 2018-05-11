@@ -23,7 +23,7 @@ public class ExtractController {
 
     @RequestMapping(value = "/staticHtml", method = RequestMethod.GET)
     public ActionResult<Map<String, String>> staticHtml(@RequestParam("url") String url) {
-        log.debug(url);
+        log.debug("try to extract url:" + url);
         Map<String, String> resultMap = extractService.extract(url);
         log.debug("extract map:" + resultMap);
         return new ActionResult<>(resultMap);
