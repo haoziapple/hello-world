@@ -13,6 +13,10 @@ public class SiteSet {
     private String type = "static";
 
     private String charSet = "UTF-8";
+    /**
+     * xpath or css
+     */
+    private String matchType = "css";
 
     private Map<String, String> selectMap;
 
@@ -48,13 +52,23 @@ public class SiteSet {
         this.charSet = charSet;
     }
 
+    public String getMatchType() {
+        return matchType;
+    }
+
+    public void setMatchType(String matchType) {
+        this.matchType = matchType;
+    }
+
     @Override
     public String toString() {
-        return "SiteSet{" +
-                "domain='" + domain + '\'' +
-                ", type='" + type + '\'' +
-                ", charSet='" + charSet + '\'' +
-                ", selectMap=" + selectMap +
-                '}';
+        final StringBuffer sb = new StringBuffer("SiteSet{");
+        sb.append("domain='").append(domain).append('\'');
+        sb.append(", type='").append(type).append('\'');
+        sb.append(", charSet='").append(charSet).append('\'');
+        sb.append(", matchType='").append(matchType).append('\'');
+        sb.append(", selectMap=").append(selectMap);
+        sb.append('}');
+        return sb.toString();
     }
 }
