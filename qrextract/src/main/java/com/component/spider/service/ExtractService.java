@@ -24,7 +24,9 @@ import java.util.regex.Pattern;
 @Service
 public class ExtractService {
     public static final String HTTP = "http://";
-    public static final Pattern pattern = Pattern.compile("[0-9]{32}");
+    public static final Pattern pattern = Pattern.compile("[123][0-9]{31}");
+    public static final String SKIP_STR = "{skip}";
+    public static final String SKIP = "\\{skip\\}";
     private static final Logger log = LoggerFactory.getLogger(ExtractService.class);
     @Autowired
     private ExtractConfig extractConfig;
@@ -39,18 +41,20 @@ public class ExtractService {
             }
         }
         if (matchSite == null) {
-            throw new CannotFindSiteException("cannot find match site!");
+            Document doc = null;
+            try {
+                doc = Jsoup.connect(url).get();
+            } catch (IOException e) {
+                log.error(e.getMessage(), e);
+                throw new BizException("cannot get html from the url!");
+            }
+            Html html = new Html(doc);
+            String traceNo = findMatch(html.toString(), pattern);
+            traceNo = (traceNo == null ? findMatch(url, pattern) : traceNo);
+            throw new CannotFindSiteException("cannot find match site!", traceNo);
         }
         return matchSite;
     }
-
-    public static String filterWords(String extractString, ExtractConfig extractConfig) {
-        for (String skipWord : extractConfig.getSkipWords()) {
-            extractString = extractString.replaceAll(skipWord, "").trim();
-        }
-        return extractString;
-    }
-
 
     public Map<String, String> extract(String url) {
         SiteSet matchSite = determinSite(url, this.extractConfig);
@@ -66,20 +70,45 @@ public class ExtractService {
         Map<String, String> map = new HashMap<>();
         if ("xpath".equals(matchSite.getMatchType())) {
             for (Map.Entry<String, String> entry : matchSite.getSelectMap().entrySet()) {
-                map.put(entry.getKey(), filterWords(html.xpath(entry.getValue()).toString(), this.extractConfig));
+                if (entry.getValue().contains(SKIP_STR)) {
+                    int skipNum = Integer.parseInt(entry.getValue().split(SKIP)[1]);
+                    String extractString = html.xpath(entry.getValue().split(SKIP)[0]).toString().trim();
+                    map.put(entry.getKey(), extractString.substring(skipNum).trim());
+                } else {
+                    map.put(entry.getKey(), html.xpath(entry.getValue()).toString().trim());
+                }
             }
         } else if ("css".equals(matchSite.getMatchType())) {
             for (Map.Entry<String, String> entry : matchSite.getSelectMap().entrySet()) {
-                map.put(entry.getKey(), filterWords(doc.select(entry.getValue()).text(), this.extractConfig));
+                if (entry.getValue().contains(SKIP_STR)) {
+                    int skipNum = Integer.parseInt(entry.getValue().split(SKIP)[1]);
+                    String extractString = doc.select(entry.getValue().split(SKIP)[0]).text().trim();
+                    map.put(entry.getKey(), extractString.substring(skipNum).trim());
+                } else {
+                    map.put(entry.getKey(), doc.select(entry.getValue()).text().trim());
+                }
             }
         } else {
             throw new BizException("网站matchType配置有误，请调整配置！");
         }
-        Matcher m = pattern.matcher(url);
-        if (m.find()) {
-            map.put("traceNo", m.group());
-        }
+        map.put("traceNo", findMatch(url, pattern));
 
         return map;
+    }
+
+    /**
+     * 根据正则查找匹配的第一个字串，没匹配到返回null
+     *
+     * @param text
+     * @param pattern
+     * @return
+     */
+    private static String findMatch(String text, Pattern pattern) {
+        Matcher m = pattern.matcher(text);
+        if (m.find()) {
+            return m.group();
+        } else {
+            return null;
+        }
     }
 }

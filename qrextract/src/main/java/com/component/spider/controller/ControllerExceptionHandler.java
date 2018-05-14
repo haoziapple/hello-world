@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author wanghao
  * @Description
@@ -20,12 +23,13 @@ public class ControllerExceptionHandler {
     public static final int CANNOT_FIND_SITE = 200002;
     private static final Logger log = LoggerFactory.getLogger(ControllerExceptionHandler.class);
 
-
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(CannotFindSiteException.class)
     @ResponseBody
-    public ActionResult processException(Exception e) {
-        log.error(e.getMessage(), e);
-        return new ActionResult(SYS_ERR, e.getMessage());
+    public ActionResult processCannotFindSiteException(CannotFindSiteException e) {
+        log.debug(e.getMessage() + "inferredTraceNo: " + e.getInferredTraceNo());
+        Map<String, String> map =new HashMap<>();
+        map.put("traceNo", e.getInferredTraceNo());
+        return new ActionResult(CANNOT_FIND_SITE, e.getMessage(), map);
     }
 
     @ExceptionHandler(BizException.class)
@@ -35,10 +39,10 @@ public class ControllerExceptionHandler {
         return new ActionResult(BIZ_ERR, e.getMessage());
     }
 
-    @ExceptionHandler(CannotFindSiteException.class)
+    @ExceptionHandler(Exception.class)
     @ResponseBody
-    public ActionResult processCannotFindSiteException(CannotFindSiteException e) {
-        log.debug(e.getMessage());
-        return new ActionResult(CANNOT_FIND_SITE, e.getMessage());
+    public ActionResult processException(Exception e) {
+        log.error(e.getMessage(), e);
+        return new ActionResult(SYS_ERR, e.getMessage());
     }
 }
