@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -20,6 +19,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @SpringBootApplication
 @EnableSwagger2
+//@EnableDiscoveryClient
 public class ExtractApp {
     private static final Logger log = LoggerFactory.getLogger(ExtractApp.class);
 
@@ -32,7 +32,7 @@ public class ExtractApp {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.component.spider"))
+                .apis(RequestHandlerSelectors.basePackage("com.component.spider.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }

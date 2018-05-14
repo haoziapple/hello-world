@@ -1,8 +1,6 @@
 package com.component.spider;
 
 import org.springframework.beans.BeansException;
-import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
-import org.springframework.boot.actuate.endpoint.annotation.WriteOperation;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -32,7 +30,7 @@ public class ReloadEndpoint implements ApplicationContextAware {
 
     private ConfigurableApplicationContext context;
 
-    @RequestMapping(value = "/reload", method = RequestMethod.GET)
+//    @RequestMapping(value = "/reload", method = RequestMethod.GET)
     public Map<String, String> reload() {
         if (this.context == null) {
             return NO_CONTEXT_MESSAGE;

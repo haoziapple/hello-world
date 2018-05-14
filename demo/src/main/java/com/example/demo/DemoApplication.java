@@ -22,7 +22,7 @@ public class DemoApplication {
 	public CommandLineRunner demo(CustomerRepository repository) {
 		return (args) -> {
 			// clean
-//			repository.deleteAll();
+			repository.deleteAll();
 			// save a couple of customers
 			repository.save(new Customer("Jack", "Bauer"));
 			repository.save(new Customer("Chloe", "O'Brian"));
