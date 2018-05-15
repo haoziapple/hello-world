@@ -22,22 +22,21 @@
 
 - 配置文件application-extract.properties以UTF-8字符码编码。
 - 修改文件后可通过http://[hostname]:[port]/umigo/refresh接口刷新配置。
-- “extract.skipWords”配置项：抓取的值中可能含有不需要的字串需要过滤掉，比如”生产方：”，”品名：”。以英文逗号”,”分隔，中文需要ASCII转码。
-- 转码地址：http://tool.oschina.net/encode?type=3
+- 抓取字段配置时，可以通过{skip}[数字]的形式跳过指定个字符数
 
 > 每一组站点配置需要一个唯一的站点ID作为配置项前缀。比如下面的例子中，站点ID就是”a”，这一组配置中的所有配置项以”extract.site.a”作为前缀。
 ```
 extract.site.a.domain=www.inteltrace.com
 extract.site.a.matchType=css
-extract.site.a.selectMap.companyName=#tab-one > div > p:nth-child(2)
-extract.site.a.selectMap.productName=#tab-two > div > div:nth-child(1) > div > a:nth-child(4)
-extract.site.a.selectMap.productSpec=body > div.content > div.container > p
-extract.site.a.selectMap.certCode=#tab-two > div > div:nth-child(1) > div > a:nth-child(5)
+extract.site.a.selectMap.companyName=#tab-one > div > p:nth-child(2){skip}4
+extract.site.a.selectMap.productName=#tab-two > div > div:nth-child(1) > div > a:nth-child(4){skip}5
+extract.site.a.selectMap.productSpec=body > div.content > div.container > p{skip}12
+extract.site.a.selectMap.certCode=#tab-two > div > div:nth-child(1) > div > a:nth-child(5){skip}7
 ```
 
 - “domain”配置项：设定站点的域名。
 
-- “matchType”配置项：设定抓取元素使用选择器的类型。可选值有”css”与”xpath”。
+- “matchType”配置项：设定抓取元素使用选择器的类型。可选值有”css”、”xpath”、“json”（json为ajax类型的站点专用）。
 
 > 设置为”css”，则选择器使用css-selector的规则；设置为”xpath”，则选择器使用xpath的规则。
 
@@ -52,6 +51,22 @@ extract.site.a.selectMap.certCode=#tab-two > div > div:nth-child(1) > div > a:nt
 2.	“Elements”选项卡中选择需要爬取的元素，右击后选择”Copy”。
 3.	css-selector选取规则的话，选择”Copy selector”;xpath选取规则的话，选择”Copy Xpath”。
 4. 将表达式粘贴到配置文件的对应配置项下。
+
+ajax类型的站点配置：
+1. 需要配置"type=ajax"，"matchType=json"；
+2. "interfaceUrl"配置接口地址，地址中使用"{traceNo}"作为追溯码的占位符；
+3. 选择器表达式使用jsonPath的形式，"$"表示根路径。
+```
+extract.site.j.domain=pss.veyong.com
+extract.site.j.type=ajax
+extract.site.j.interfaceUrl=http://pss.veyong.com/GetData.ashx?BOTTLE_NUMBER={traceNo}
+extract.site.j.matchType=json
+extract.site.j.selectMap.companyName=$.COMPANY_NAME
+extract.site.j.selectMap.productName=$.PRODUCT_NAME
+extract.site.j.selectMap.productMark=$.PRODUCT_MARK
+extract.site.j.selectMap.productSpec=$.PRODUCT_SPEC
+extract.site.j.selectMap.dosage=$.PRODUCT_CATEGORY
+```
 
 ## 附录
 
