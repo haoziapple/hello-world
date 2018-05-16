@@ -1,5 +1,6 @@
 package com.component.spider.service;
 
+import com.component.spider.JsoupUtil;
 import com.component.spider.config.ExtractConfig;
 import com.component.spider.config.SiteSet;
 import com.component.spider.exception.BizException;
@@ -49,13 +50,7 @@ public class ExtractHelper {
             }
         }
         if (matchSite == null) {
-            Document doc = null;
-            try {
-                doc = Jsoup.connect(url).get();
-            } catch (IOException e) {
-                log.error(e.getMessage(), e);
-                throw new BizException("cannot get html from the url!");
-            }
+            Document doc = JsoupUtil.getDoc(url, extractConfig.getConnect());
             Html html = new Html(doc);
             String traceNo = findMatch(html.toString(), TRACE_NO_P);
             traceNo = (traceNo == null ? findMatch(url, TRACE_NO_P) : traceNo);

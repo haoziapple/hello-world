@@ -14,6 +14,8 @@ import java.util.Map;
 public class ExtractConfig {
     private Map<String, SiteSet> site;
 
+    private ConnectConfig connect;
+
     public Map<String, SiteSet> getSite() {
         return site;
     }
@@ -22,10 +24,19 @@ public class ExtractConfig {
         this.site = site;
     }
 
+    public ConnectConfig getConnect() {
+        return connect;
+    }
+
+    public void setConnect(ConnectConfig connect) {
+        this.connect = connect;
+    }
+
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("ExtractConfig{");
         sb.append("site=").append(site);
+        sb.append(", connect=").append(connect);
         sb.append('}');
         return sb.toString();
     }

@@ -14,7 +14,8 @@ use as a playground for coding
 - ionicblank,ionic-tutorial,ionic-tutorial,myApp：使用ionic生成的app项目
 - trygulp：尝试使用gulp的学习项目
 - spider：爬虫项目
-
+- qrextract：站点抓取项目，抓取规则可配置
+- tryflyway：尝试flyway做数据库版本管理
 
 
 - yeoman生成项目，generator:https://github.com/yeoman/generator-webapp
