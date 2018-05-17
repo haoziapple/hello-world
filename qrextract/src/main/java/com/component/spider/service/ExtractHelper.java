@@ -40,7 +40,7 @@ public class ExtractHelper {
      * @param extractConfig
      * @return
      */
-    public static SiteSet determinSite(String url, ExtractConfig extractConfig) {
+    public static SiteSet determinSite(String url, ExtractConfig extractConfig, String htmlStr) {
         SiteSet matchSite = null;
         // 搜索域名匹配的站点
         for (Map.Entry<String, SiteSet> entry : extractConfig.getSite().entrySet()) {
@@ -50,9 +50,7 @@ public class ExtractHelper {
             }
         }
         if (matchSite == null) {
-            Document doc = JsoupUtil.getDoc(url, extractConfig.getConnect());
-            Html html = new Html(doc);
-            String traceNo = findMatch(html.toString(), TRACE_NO_P);
+            String traceNo = findMatch(htmlStr, TRACE_NO_P);
             traceNo = (traceNo == null ? findMatch(url, TRACE_NO_P) : traceNo);
             throw new CannotFindSiteException("cannot find match site!", traceNo);
         }

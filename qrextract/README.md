@@ -1,5 +1,5 @@
 # 二维码扫描服务
-	
+
 ## 服务功能：
 
 - 根据扫描二维码得到的url地址，将页面上的产品信息抓取下来，通过接口返回。
@@ -89,13 +89,20 @@ extract.site.j.selectMap.dosage=$.PRODUCT_CATEGORY
 
 试验扫码站点：
 - http://www.inteltrace.com/index.php/qx/code/11417461004101000760003240752363
+- http://www.inteltrace.com/index.php/qx/code/11216701003101000030023809765783
 - http://hfyswl.cn:8018/nywork/web/OQ.do?c=11424991010135157628304384082078
 - http://q.icama.cn/q/11807521040001520876018152221971
+- http://q.icama.cn/q/11327051201152143824658983563524
 - http://www.lgznyzs.com/v3/valid.aspx?c=112&code=11718821310000000000003602539120
 - http://www.cha315.cn/c/c8/cs/csgm.aspx?p=211&no=11178367011626035250475348486
-- http://www.inteltrace.com/index.php/qx/code/11216701003101000030023809765783
 - http://erweima.wynca.com/q.html?code=18582941003921021804060000020166
 - http://jshn.168nz.cn/b/10971751040544232490658065842338-3681129/
 - http://m.n369.com/elabel/226
-- http://www.winttp.com/qy/syn/qr/11114571532170000704817782297898
+- http://www.winttp.com/qy/syn/qr/11114571532170000704817782297898 ==> http://syngenta.winsafe.cn/api/retailsfwquery.aspx?SynFwCode=11114571532170000704817782297898
 - http://api.china-haixun.com.cn/sn/5a72c087dbac45zh8
+- http://pss.veyong.com/myQRCode.aspx?code=11522031120021100000200064160411
+
+问题站点：
+- http://winsafe.cn/?s=XSNA8A000616540065778778180129 ==> http://syngenta.winsafe.cn/api/retailsfwquery.aspx?SynFwCode=XSNA8A000616540065778778180129：页面无信息
+- http://www.winttp.com/qy/dupont/qr/11100533091170033050877658981491 ==> http://m.n369.com/elabel/af?winsafe_product_id=001002&security_code=11100533091170033050877658981491&brand=%E6%9D%9C%E9%82%A6&product_name=%E5%8F%AF%E6%9D%80%E5%BE%973000&product_spec=500g%2A20&product_flow=%E6%A2%A7%E5%B7%9E%E5%B8%82%E5%95%86%E4%B8%9A%E5%8F%91%E5%B1%95%E5%85%AC%E5%8F%B8%E5%9F%B9%E7%A6%8F%E5%86%9C%E8%B5%84%E7%BB%8F%E8%90%A5%E9%83%A8&produce_date=2017/7/20&produce_enterprise=%E4%B8%8A%E6%B5%B7%E7%94%9F%E5%86%9C%E7%94%9F%E5%8C%96%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8&first_query_time=2018-05-16%2017:25:30&is_real=1&query_times=17&security_msg=%E6%82%A8%E6%9F%A5%E8%AF%A2%E7%9A%84%E4%BA%A7%E5%93%81%E6%98%AF%E6%9D%9C%E9%82%A6%E5%85%AC%E5%8F%B8%E7%94%9F%E4%BA%A7%E7%9A%84%E7%B3%BB%E5%88%97%E4%BA%A7%E5%93%81,%E8%AF%B7%E6%94%BE%E5%BF%83%E4%BD%BF%E7%94%A8.&product_quality=%E5%90%88%E6%A0%BC&product_owner=%E7%BE%8E%E5%9B%BD%E6%9D%9C%E9%82%A6%E5%85%AC%E5%8F%B8&product_component=46%25%E6%B0%A2%E6%B0%A7%E5%8C%96%E9%93%9C%E6%B0%B4%E5%88%86%E6%95%A3%E7%B2%92%E5%89%82&product_lot=FEB18SHSW1 : 页面不统一
+- http://sutianag.cn/?v=10941561014180124000281759313128#section_index/article_index：暂不支持

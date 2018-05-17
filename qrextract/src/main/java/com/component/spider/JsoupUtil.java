@@ -2,7 +2,6 @@ package com.component.spider;
 
 import com.component.spider.config.ConnectConfig;
 import com.component.spider.exception.BizException;
-import com.component.spider.service.ExtractHelper;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
@@ -23,6 +22,7 @@ public class JsoupUtil {
 
     /**
      * 根据url获取文档doc
+     *
      * @param url
      * @param config
      * @return

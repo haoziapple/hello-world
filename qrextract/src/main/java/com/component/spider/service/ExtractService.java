@@ -30,7 +30,11 @@ public class ExtractService {
     private ExtractConfig extractConfig;
 
     public Map<String, String> extract(String url) {
-        SiteSet matchSite = ExtractHelper.determinSite(url, this.extractConfig);
+        Document doc = JsoupUtil.getDoc(url, extractConfig.getConnect());
+        String baseUri = doc.baseUri();
+        log.debug("base URI is: " + baseUri);
+
+        SiteSet matchSite = ExtractHelper.determinSite(baseUri, this.extractConfig, new Html(doc).toString());
         Map<String, String> map = new HashMap<>();
         // 尝试从url里获取traceNo
         map.put("traceNo", ExtractHelper.findMatch(url, ExtractHelper.TRACE_NO_P));
@@ -48,7 +52,6 @@ public class ExtractService {
             }
         } else {
             // 静态网站类型的信息抓取
-            Document doc = JsoupUtil.getDoc(url, extractConfig.getConnect());
             for (Map.Entry<String, String> entry : matchSite.getSelectMap().entrySet()) {
                 map.put(entry.getKey(), ExtractHelper.extractValue(doc, entry.getValue(), matchSite.getMatchType()));
             }
