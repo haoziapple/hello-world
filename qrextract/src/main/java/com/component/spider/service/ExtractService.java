@@ -6,16 +6,14 @@ import com.alibaba.fastjson.JSONPath;
 import com.component.spider.JsoupUtil;
 import com.component.spider.config.ExtractConfig;
 import com.component.spider.config.SiteSet;
-import com.component.spider.exception.BizException;
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import us.codecraft.webmagic.selector.Html;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,8 +30,8 @@ public class ExtractService {
         Document doc = JsoupUtil.getDoc(url, extractConfig.getConnect());
         String baseUri = doc.baseUri();
         log.debug("base URI is: " + baseUri);
-
-        SiteSet matchSite = ExtractHelper.determinSite(baseUri, this.extractConfig, new Html(doc).toString());
+        // 查找匹配站点
+        SiteSet matchSite = ExtractHelper.determinSite(baseUri, extractConfig.getSite(), new Html(doc).toString());
         Map<String, String> map = new HashMap<>();
         // 尝试从url里获取traceNo
         map.put("traceNo", ExtractHelper.findMatch(url, ExtractHelper.TRACE_NO_P));
@@ -58,6 +56,4 @@ public class ExtractService {
 
         return map;
     }
-
-
 }

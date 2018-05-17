@@ -73,7 +73,7 @@ public class JsoupUtil {
             if (siteConfig.getBodyString() != null) {
                 connect.requestBody(siteConfig.getBodyString().replaceAll(TRACE_NO_REGREX, traceNo));
             }
-
+            // GET请求或POST请求
             if (SiteSet.Type.AJAX_GET.equals(siteConfig.getType())) {
                 doc = connect.get();
             } else if (SiteSet.Type.AJAX_POST.equals(siteConfig.getType())) {

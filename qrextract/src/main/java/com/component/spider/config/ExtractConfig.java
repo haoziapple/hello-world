@@ -9,9 +9,9 @@ import java.util.Map;
  * 抽取配置类
  * Created by ASUS on 2018/5/10.
  */
-@ConfigurationProperties(prefix="extract")
+@ConfigurationProperties(prefix = "extract")
 @Component
-public class ExtractConfig {
+public class ExtractConfig  {
     private Map<String, SiteSet> site;
 
     private ConnectConfig connect;
