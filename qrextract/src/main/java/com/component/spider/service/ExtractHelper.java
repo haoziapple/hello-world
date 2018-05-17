@@ -88,9 +88,9 @@ public class ExtractHelper {
             skipNum = Integer.parseInt(expression.split(SKIP_REGREX)[1]);
             expression = expression.split(SKIP_REGREX)[0];
         }
-        if ("xpath".equals(type)) {
+        if (SiteSet.MatchType.XPATH.equals(type)) {
             return new Html(doc).xpath(expression).toString().trim().substring(skipNum).trim();
-        } else if ("css".equals(type)) {
+        } else if (SiteSet.MatchType.CSS.equals(type)) {
             return doc.select(expression).text().trim().substring(skipNum).trim();
         }else {
             throw new BizException("网站matchType配置有误，请调整配置！");

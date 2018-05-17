@@ -24,7 +24,6 @@ import java.util.Map;
  */
 @Service
 public class ExtractService {
-    public static final String TRACE_NO_REGREX = "\\{traceNo\\}";
     private static final Logger log = LoggerFactory.getLogger(ExtractService.class);
     @Autowired
     private ExtractConfig extractConfig;
@@ -39,11 +38,11 @@ public class ExtractService {
         // 尝试从url里获取traceNo
         map.put("traceNo", ExtractHelper.findMatch(url, ExtractHelper.TRACE_NO_P));
 
-        if ("ajax".equals(matchSite.getType()) && matchSite.getInterfaceUrl() != null) {
+        if (matchSite.getType().startsWith("ajax") && matchSite.getInterfaceUrl() != null) {
             // 接口类型的信息抓取
             String traceNo = ExtractHelper.findMatch(url, ExtractHelper.TRACE_NO_P);
             // 访问接口
-            Document interDoc = JsoupUtil.getDoc(matchSite.getInterfaceUrl().replaceFirst(TRACE_NO_REGREX, traceNo), extractConfig.getConnect());
+            Document interDoc = JsoupUtil.getAjaxDoc(traceNo, matchSite, extractConfig.getConnect());
             Html interHtml = new Html(interDoc);
             String json = interHtml.xpath("/html/body/text()").toString();
             JSONObject jsonObject = JSON.parseObject(json);
