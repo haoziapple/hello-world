@@ -34,7 +34,7 @@ public class ExtractService {
         SiteSet matchSite = ExtractHelper.determinSite(baseUri, extractConfig.getSite(), new Html(doc).toString());
         Map<String, String> map = new HashMap<>();
         // 尝试从url里获取traceNo
-        map.put("traceNo", ExtractHelper.findMatch(url, ExtractHelper.TRACE_NO_P));
+        map.put("traceCode", ExtractHelper.findMatch(url, ExtractHelper.TRACE_NO_P));
 
         if (matchSite.getType().startsWith("ajax") && matchSite.getInterfaceUrl() != null) {
             // 接口类型的信息抓取

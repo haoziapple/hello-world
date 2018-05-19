@@ -19,7 +19,7 @@ import java.util.Map;
  * @date 2018-05-16 14:14
  */
 public class JsoupUtil {
-    public static final String TRACE_NO_REGREX = "\\{traceNo\\}";
+    public static final String TRACE_NO_REGREX = "\\{traceCode\\}";
 
     private JsoupUtil() {
     }

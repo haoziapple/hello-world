@@ -57,9 +57,9 @@ extract.site.a.selectMap.certCode=#tab-two > div > div:nth-child(1) > div > a:nt
 
 ajax类型的站点配置：
 1. 需要配置"type=ajaxget"(接口类型为GET)或"type=ajaxpost"(接口类型为POST)，"matchType=json"；
-2. "interfaceUrl"配置接口地址，地址中使用"{traceNo}"作为追溯码的占位符；
-3. "formMap"配置form请求键值对，使用"{traceNo}"作为追溯码的占位符；
-4. "bodyString"配置请求体，使用"{traceNo}"作为追溯码的占位符；
+2. "interfaceUrl"配置接口地址，地址中使用"{traceCode}"作为追溯码的占位符；
+3. "formMap"配置form请求键值对，使用"{traceCode}"作为追溯码的占位符；
+4. "bodyString"配置请求体，使用"{traceCode}"作为追溯码的占位符；
 5. 选择器表达式使用jsonPath的形式，"$"表示根路径。
 
 GET接口类型实例：
@@ -99,8 +99,9 @@ extract.site.sutianag.selectMap.certCode=$.outdata[3].Val
 |productSpec|产品规格|
 |productMark|品牌|
 |certCode|登记证号|
-|traceNo|追溯码(32位)|
+|traceCode|追溯码(32位)|
 |dosage|剂型|
+|productionDate|生产日期|
 
 错误码：
 |错误码|含义|
