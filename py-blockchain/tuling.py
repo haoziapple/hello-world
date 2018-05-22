@@ -5,7 +5,7 @@ import requests, json
 try:
     with open('tuling.json') as f: key = json.loads(f.read())['key']
 except:
-    key = '' # if key is '', get_response will return None
+    key = '67d001186f2b47b3b9dbe1c2c66d1f3a' # if key is '', get_response will return None
     # raise Exception('There is something wrong with the format of you plugin/config/tuling.json')
 
 def get_response(msg, storageClass = None, userName = None, userid = 'ItChat'):
