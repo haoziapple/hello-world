@@ -21,7 +21,7 @@ def Page_Info(myPage):
 
 def ProvincePage_Info(myPage):
     '''Regex'''
-    mypage_Info = re.findall(r'<tr class="citytr"><td><a href=\'.*?\.html\'>.*?</a></td><td><a href=\'(.*?)\.html\'>(.*?)</a></td></tr>', myPage, re.S)
+    mypage_Info = re.findall(r'<tr class=\'citytr\'><td><a href=\'.*?\'>.*?</a></td><td><a href=\'(.*?)\.html\'>(.*?)</a></td></tr>', myPage, re.S)
     return mypage_Info
 
 def Spider(baseUrl):
@@ -34,14 +34,16 @@ def Spider(baseUrl):
     filename = u"地区"
     StringListSave(save_path, filename, myPageResults)
 
-
+    i=1
     for code, item in myPageResults:
         print u"省级单位 ", item.encode("ISO-8859-1")
+        print baseUrl + code.encode("ISO-8859-1") + '.html'
         provincePage = requests.get(baseUrl + code.encode("ISO-8859-1") + '.html',headers=headers).content.decode("ISO-8859-1")
         provinceResults = ProvincePage_Info(provincePage)
 
-        filename=u"省级单位"
+        filename=str(i)+'_'+u"省级单位"
         StringListSave(save_path, filename, provinceResults)
+        i=i+1
 
 
 if __name__ == '__main__':
