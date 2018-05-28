@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haozi.trymybatis.ThirdpartyOauthMapper">
+
+    <resultMap id="BaseResultMap" type="com.haozi.trymybatis.ThirdpartyOauthDO">
+        <result property="id" jdbcType="INTEGER" column="id"/>
+        <result property="appId" jdbcType="VARCHAR" column="app_id"/>
+        <result property="userId" jdbcType="VARCHAR" column="user_id"/>
+        <result property="thirdpartyId" jdbcType="VARCHAR" column="thirdparty_id"/>
+        <result property="bindType" jdbcType="TINYINT" column="bind_type"/>
+        <result property="metaData" jdbcType="VARCHAR" column="meta_data"/>
+        <result property="remark" jdbcType="VARCHAR" column="remark"/>
+        <result property="bindStatus" jdbcType="TINYINT" column="bind_status"/>
+        <result property="bindTime" jdbcType="DATE" column="bind_time"/>
+        <result property="updateTime" jdbcType="DATE" column="update_time"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+`id`,`app_id`,`user_id`,`thirdparty_id`,`bind_type`,`meta_data`,`remark`,`bind_status`,`bind_time`,`update_time`    </sql>
+
+	<select id="item" resultMap="BaseResultMap">
+      select
+	  <include refid="Base_Column_List" />
+      from ius_thirdparty_oauth where id = #{id}
+	</select>
+</mapper>
