@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <evaluator name="CALLER_DISPLAY_EVAL" class="ch.qos.logback.classic.boolex.JaninoEventEvaluator">
+        <expression>return logger.contains("ufast");</expression>
+    </evaluator>
+    <springProperty scope="context" name="APP_NAME" source="spring.application.name"
+                    defaultValue="spring-app"/>
+    <springProperty scope="context" name="PORT" source="server.port"
+                    defaultValue="port"/>
+    <conversionRule conversionWord="IP" converterClass="logging.IPLogConfig"/>
+    <conversionRule conversionWord="FAST_LEVEL" converterClass="logging.FastLevelConverter"/>
+    <conversionRule conversionWord="fastCaller"
+                    converterClass="logging.FastCallerDataConverter"/>
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+    <conversionRule conversionWord="wex"
+                    converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
+    <conversionRule conversionWord="wEx"
+                    converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
+    <property name="CONSOLE_LOG_PATTERN"
+              value="%property{APP_NAME}|%IP:%property{PORT}|%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint}|%clr([%X{X-B3-TraceId:-},%X{X-B3-ParentSpanId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}])|%clr(%-7FAST_LEVEL)|%thread|%clr(%class-%method-%line)|%fastCaller{1..2,CALLER_DISPLAY_EVAL}|%msg|%n"/>
+    <property name="FILE_LOG_PATTERN"
+              value="%property{APP_NAME}|%IP:%property{PORT}|%d{yyyy-MM-dd HH:mm:ss.SSS}|[%X{X-B3-TraceId:-},%X{X-B3-ParentSpanId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}]|%FAST_LEVEL|%thread|%class-%method-%line|%fastCaller{1..2,CALLER_DISPLAY_EVAL}|%msg|%n"/>
+
+    <!--继承spring的默认logback设置-->
+    <property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/spring.log}"/>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+    <appender name="FILE"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 按天划分进行文件输出，超过指定大小对文件备份 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}-%i.log
+            </FileNamePattern>
+            <!-- 文件最大保存历史天数 -->
+            <MaxHistory>7</MaxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!-- 设置文件大于10M进行归档 -->
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="FILE" />
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+</configuration>
