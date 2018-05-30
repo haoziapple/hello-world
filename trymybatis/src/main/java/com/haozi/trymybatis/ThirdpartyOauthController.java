@@ -55,4 +55,11 @@ public class ThirdpartyOauthController {
         PageHelper.startPage(pageNum, pageSize);
         return new PageInfo(thirdpartyOauthMapper.list());
     }
+
+    @GetMapping("/orderPage")
+    public PageInfo orderPage(int pageNum, int pageSize, String orderBy) {
+        PageHelper.startPage(pageNum, pageSize);
+        PageHelper.orderBy(orderBy);
+        return new PageInfo(thirdpartyOauthMapper.list());
+    }
 }
