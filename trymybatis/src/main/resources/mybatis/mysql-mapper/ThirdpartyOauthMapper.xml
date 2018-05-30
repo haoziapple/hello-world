@@ -29,4 +29,10 @@
       SET remark = #{remark}
       where id = #{id}
     </update>
+
+    <select id="list" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        from ius_thirdparty_oauth WHERE 1=1
+    </select>
 </mapper>
