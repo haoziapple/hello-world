@@ -11,8 +11,8 @@
         <result property="metaData" jdbcType="VARCHAR" column="meta_data"/>
         <result property="remark" jdbcType="VARCHAR" column="remark"/>
         <result property="bindStatus" jdbcType="TINYINT" column="bind_status"/>
-        <result property="bindTime" jdbcType="DATE" column="bind_time"/>
-        <result property="updateTime" jdbcType="DATE" column="update_time"/>
+        <result property="bindTime" jdbcType="TIMESTAMP" column="bind_time"/>
+        <result property="updateTime" jdbcType="TIMESTAMP" column="update_time"/>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -23,4 +23,10 @@
 	  <include refid="Base_Column_List" />
       from ius_thirdparty_oauth where id = #{id}
 	</select>
+
+    <update id="updateRemarkById" parameterType="com.haozi.trymybatis.ThirdpartyOauthDO">
+      update ius_thirdparty_oauth
+      SET remark = #{remark}
+      where id = #{id}
+    </update>
 </mapper>

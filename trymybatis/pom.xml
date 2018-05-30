@@ -33,6 +33,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!--flyway数据库迁移-->
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
@@ -63,11 +64,13 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--pagehelper自动分页-->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper</artifactId>
             <version>4.1.6</version>
         </dependency>
+        <!--swagger-->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
@@ -78,11 +81,13 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.6.1</version>
         </dependency>
+        <!--自动配置模块，里面只有配置文件-->
         <dependency>
             <groupId>com.haozi</groupId>
             <artifactId>config</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <!--日志模块-->
         <dependency>
             <groupId>com.haozi</groupId>
             <artifactId>logging</artifactId>

@@ -9,4 +9,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface ThirdpartyOauthMapper {
     ThirdpartyOauthDO item(int id);
+
+    int updateRemarkById(ThirdpartyOauthDO thirdpartyOauthDO);
 }
