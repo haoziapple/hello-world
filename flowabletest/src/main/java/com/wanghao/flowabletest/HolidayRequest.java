@@ -32,7 +32,7 @@ public class HolidayRequest {
 
         if ("mysql".equals(type))
             cfg = new StandaloneProcessEngineConfiguration()
-                    .setJdbcUrl("jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8")
+                    .setJdbcUrl("jdbc:mysql://localhost:3306/flowable?characterEncoding=UTF-8")
                     .setJdbcUsername("root")
                     .setJdbcPassword("123456")
                     .setJdbcDriver("com.mysql.jdbc.Driver")
