@@ -12,10 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.List;
 
 /**
@@ -56,6 +60,16 @@ public class IcamaController {
             throw new IllegalArgumentException("证号至少6位");
         }
         return presticideRepo.findByCertificateCodeLike(certificateCode);
+    }
+
+    @GetMapping("/printAll")
+    public void printAll() throws Exception{
+        List<PresticideDetail> list = presticideRepo.findAll();
+        File file = new File("E:/pesticide.txt");
+        OutputStream os  = new FileOutputStream(file);
+        for (PresticideDetail detail : list) {
+            os.write((detail.toString()+ '\n').getBytes());
+        }
     }
 
 
