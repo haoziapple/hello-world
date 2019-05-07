@@ -1,0 +1,32 @@
+{
+    "xauthApp": {
+        "profile": {
+            "home": {
+                "title": "Profiles",
+                "createLabel": "创建新 Profile",
+                "createOrEditLabel": "创建或编辑 Profile"
+            },
+            "created": "Profile {{ param }} 创建成功",
+            "updated": "Profile {{ param }} 更新成功",
+            "deleted": "Profile {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Profile {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Profile"
+            },
+            "name": "Name",
+            "loginName": "Login Name",
+            "password": "Password",
+            "mobile": "Mobile",
+            "email": "Email",
+            "sex": "Sex",
+            "locked": "Locked",
+            "remark": "Remark",
+            "extMap": "Ext Map",
+            "workspace": "Workspace",
+            "department": "Department",
+            "role": "Role"
+        }
+    }
+}

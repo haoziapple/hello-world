@@ -1,0 +1,79 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="menu">
+            <h2><span jhiTranslate="xauthApp.menu.detail.title">Menu</span> {{menu.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="xauthApp.menu.name">Name</span></dt>
+                <dd>
+                    <span>{{menu.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.menu.code">Code</span></dt>
+                <dd>
+                    <span>{{menu.code}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.menu.seq">Seq</span></dt>
+                <dd>
+                    <span>{{menu.seq}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.menu.state">State</span></dt>
+                <dd>
+                    <span>{{menu.state}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.menu.url">Url</span></dt>
+                <dd>
+                    <span>{{menu.url}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.menu.leaf">Leaf</span></dt>
+                <dd>
+                    <span>{{menu.leaf}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.menu.showFlag">Show Flag</span></dt>
+                <dd>
+                    <span>{{menu.showFlag}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.menu.extmap">Extmap</span></dt>
+                <dd>
+                    <span>{{menu.extmap}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.menu.parent">Parent</span></dt>
+                <dd>
+                    <div *ngIf="menu.parentId">
+                        <a [routerLink]="['/menu', menu.parentId, 'view']">{{menu.parentId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.menu.role">Role</span></dt>
+                <dd>
+                    <span *ngFor="let role of menu.roles; let last = last">
+                        <a [routerLink]="['/role', role?.id, 'view' ]">{{role.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.menu.template">Template</span></dt>
+                <dd>
+                    <span *ngFor="let template of menu.templates; let last = last">
+                        <a [routerLink]="['/template', template?.id, 'view' ]">{{template.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.menu.auth">Auth</span></dt>
+                <dd>
+                    <span *ngFor="let auth of menu.auths; let last = last">
+                        <a [routerLink]="['/auth', auth?.id, 'view' ]">{{auth.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/menu', menu.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

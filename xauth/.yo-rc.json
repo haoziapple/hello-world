@@ -1,0 +1,37 @@
+{
+    "generator-jhipster": {
+        "promptValues": {
+            "packageName": "com.github.haozi",
+            "nativeLanguage": "zh-cn"
+        },
+        "jhipsterVersion": "5.8.2",
+        "applicationType": "monolith",
+        "baseName": "xauth",
+        "packageName": "com.github.haozi",
+        "packageFolder": "com/github/haozi",
+        "serverPort": "8080",
+        "authenticationType": "jwt",
+        "cacheProvider": "no",
+        "websocket": false,
+        "databaseType": "sql",
+        "devDatabaseType": "h2Disk",
+        "prodDatabaseType": "mysql",
+        "searchEngine": false,
+        "messageBroker": false,
+        "serviceDiscoveryType": "eureka",
+        "buildTool": "maven",
+        "enableSwaggerCodegen": false,
+        "jwtSecretKey": "NDY0MWFhODdlMmY5ODI3ZGViMzRhY2FjN2IyNzg2NzI4M2I1NGE4YzU4YTY1ZjcyNjI2ZGUwZTk4MDAxNjUyZWQzNGYyMzE1MThlMjhkNDUwNzRhMzJiYTkyMjE2MDAyYzIwZjUyZTg1ZWI2YThiZGFhMmU2YzY5NzNlNzI2ZGY=",
+        "clientFramework": "angularX",
+        "useSass": false,
+        "clientPackageManager": "npm",
+        "testFrameworks": [],
+        "jhiPrefix": "jhi",
+        "entitySuffix": "",
+        "dtoSuffix": "DTO",
+        "otherModules": [],
+        "enableTranslation": true,
+        "nativeLanguage": "zh-cn",
+        "languages": ["zh-cn", "en"]
+    }
+}

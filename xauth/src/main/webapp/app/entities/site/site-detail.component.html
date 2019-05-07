@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="site">
+            <h2><span jhiTranslate="xauthApp.site.detail.title">Site</span> {{site.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="xauthApp.site.name">Name</span></dt>
+                <dd>
+                    <span>{{site.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.site.homeUrl">Home Url</span></dt>
+                <dd>
+                    <span>{{site.homeUrl}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.site.remark">Remark</span></dt>
+                <dd>
+                    <span>{{site.remark}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.site.extmap">Extmap</span></dt>
+                <dd>
+                    <span>{{site.extmap}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/site', site.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

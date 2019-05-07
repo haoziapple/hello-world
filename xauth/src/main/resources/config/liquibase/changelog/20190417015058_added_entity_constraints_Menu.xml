@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Menu.
+    -->
+    <changeSet id="20190417015058-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="parent_id"
+                                 baseTableName="menu"
+                                 constraintName="fk_menu_parent_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="menu"/>
+
+        <addForeignKeyConstraint baseColumnNames="menu_id"
+                                 baseTableName="menu_role"
+                                 constraintName="fk_menu_role_menu_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="menu"/>
+        <addForeignKeyConstraint baseColumnNames="role_id"
+                                 baseTableName="menu_role"
+                                 constraintName="fk_menu_role_role_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="role"/>
+        
+        <addForeignKeyConstraint baseColumnNames="menu_id"
+                                 baseTableName="menu_template"
+                                 constraintName="fk_menu_template_menu_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="menu"/>
+        <addForeignKeyConstraint baseColumnNames="template_id"
+                                 baseTableName="menu_template"
+                                 constraintName="fk_menu_template_template_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="template"/>
+        
+        <addForeignKeyConstraint baseColumnNames="menu_id"
+                                 baseTableName="menu_auth"
+                                 constraintName="fk_menu_auth_menu_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="menu"/>
+        <addForeignKeyConstraint baseColumnNames="auth_id"
+                                 baseTableName="menu_auth"
+                                 constraintName="fk_menu_auth_auth_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="auth"/>
+        
+    </changeSet>
+</databaseChangeLog>

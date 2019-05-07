@@ -1,0 +1,32 @@
+{
+    "xauthApp": {
+        "profile": {
+            "home": {
+                "title": "Profiles",
+                "createLabel": "Create a new Profile",
+                "createOrEditLabel": "Create or edit a Profile"
+            },
+            "created": "A new Profile is created with identifier {{ param }}",
+            "updated": "A Profile is updated with identifier {{ param }}",
+            "deleted": "A Profile is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Profile {{ id }}?"
+            },
+            "detail": {
+                "title": "Profile"
+            },
+            "name": "Name",
+            "loginName": "Login Name",
+            "password": "Password",
+            "mobile": "Mobile",
+            "email": "Email",
+            "sex": "Sex",
+            "locked": "Locked",
+            "remark": "Remark",
+            "extMap": "Ext Map",
+            "workspace": "Workspace",
+            "department": "Department",
+            "role": "Role"
+        }
+    }
+}

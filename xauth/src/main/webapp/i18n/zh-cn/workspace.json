@@ -1,0 +1,25 @@
+{
+    "xauthApp": {
+        "workspace": {
+            "home": {
+                "title": "Workspaces",
+                "createLabel": "创建新 Workspace",
+                "createOrEditLabel": "创建或编辑 Workspace"
+            },
+            "created": "Workspace {{ param }} 创建成功",
+            "updated": "Workspace {{ param }} 更新成功",
+            "deleted": "Workspace {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Workspace {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Workspace"
+            },
+            "name": "Name",
+            "remark": "Remark",
+            "extmap": "Extmap",
+            "parent": "Parent",
+            "site": "Site"
+        }
+    }
+}

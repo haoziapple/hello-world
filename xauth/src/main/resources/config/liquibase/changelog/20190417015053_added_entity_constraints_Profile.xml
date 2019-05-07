@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Profile.
+    -->
+    <changeSet id="20190417015053-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="workspace_id"
+                                 baseTableName="profile"
+                                 constraintName="fk_profile_workspace_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="workspace"/>
+
+        <addForeignKeyConstraint baseColumnNames="profile_id"
+                                 baseTableName="profile_department"
+                                 constraintName="fk_profile_department_profile_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="profile"/>
+        <addForeignKeyConstraint baseColumnNames="department_id"
+                                 baseTableName="profile_department"
+                                 constraintName="fk_profile_department_department_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="department"/>
+        
+        <addForeignKeyConstraint baseColumnNames="profile_id"
+                                 baseTableName="profile_role"
+                                 constraintName="fk_profile_role_profile_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="profile"/>
+        <addForeignKeyConstraint baseColumnNames="role_id"
+                                 baseTableName="profile_role"
+                                 constraintName="fk_profile_role_role_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="role"/>
+        
+    </changeSet>
+</databaseChangeLog>

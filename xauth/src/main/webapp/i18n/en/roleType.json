@@ -1,0 +1,10 @@
+{
+    "xauthApp": {
+        "RoleType": {
+            "null": "",
+            "SYSTEM_ADMIN": "SYSTEM_ADMIN",
+            "ADMIN": "ADMIN",
+            "USER": "USER"
+        }
+    }
+}

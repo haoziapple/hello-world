@@ -1,0 +1,10 @@
+{
+    "xauthApp": {
+        "ClientType": {
+            "null": "",
+            "PC": "PC",
+            "APP": "APP",
+            "WECHAT": "WECHAT"
+        }
+    }
+}

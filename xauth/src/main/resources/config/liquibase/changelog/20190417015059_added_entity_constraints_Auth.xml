@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Auth.
+    -->
+    <changeSet id="20190417015059-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="auth_id"
+                                 baseTableName="auth_role"
+                                 constraintName="fk_auth_role_auth_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="auth"/>
+        <addForeignKeyConstraint baseColumnNames="role_id"
+                                 baseTableName="auth_role"
+                                 constraintName="fk_auth_role_role_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="role"/>
+        
+        <addForeignKeyConstraint baseColumnNames="auth_id"
+                                 baseTableName="auth_template"
+                                 constraintName="fk_auth_template_auth_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="auth"/>
+        <addForeignKeyConstraint baseColumnNames="template_id"
+                                 baseTableName="auth_template"
+                                 constraintName="fk_auth_template_template_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="template"/>
+        
+    </changeSet>
+</databaseChangeLog>

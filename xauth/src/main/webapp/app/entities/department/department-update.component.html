@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-department-heading" jhiTranslate="xauthApp.department.home.createOrEditLabel">Create or edit a Department</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!department.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="department.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="xauthApp.department.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="department.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="xauthApp.department.code" for="field_code">Code</label>
+                    <input type="text" class="form-control" name="code" id="field_code"
+                        [(ngModel)]="department.code" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="xauthApp.department.seq" for="field_seq">Seq</label>
+                    <input type="number" class="form-control" name="seq" id="field_seq"
+                        [(ngModel)]="department.seq" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="xauthApp.department.leaf" for="field_leaf">Leaf</label>
+                    <input type="checkbox" class="form-control" name="leaf" id="field_leaf"
+                        [(ngModel)]="department.leaf" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="xauthApp.department.remark" for="field_remark">Remark</label>
+                    <input type="text" class="form-control" name="remark" id="field_remark"
+                        [(ngModel)]="department.remark" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="xauthApp.department.extMap" for="field_extMap">Ext Map</label>
+                    <input type="text" class="form-control" name="extMap" id="field_extMap"
+                        [(ngModel)]="department.extMap" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="xauthApp.department.workspace" for="field_workspace">Workspace</label>
+                    <select class="form-control" id="field_workspace" name="workspace" [(ngModel)]="department.workspaceId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="workspaceOption.id" *ngFor="let workspaceOption of workspaces; trackBy: trackWorkspaceById">{{workspaceOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="xauthApp.department.parent" for="field_parent">Parent</label>
+                    <select class="form-control" id="field_parent" name="parent" [(ngModel)]="department.parentId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="departmentOption.id" *ngFor="let departmentOption of departments; trackBy: trackDepartmentById">{{departmentOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

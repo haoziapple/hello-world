@@ -1,0 +1,25 @@
+{
+    "xauthApp": {
+        "site": {
+            "home": {
+                "title": "Sites",
+                "createLabel": "创建新 Site",
+                "createOrEditLabel": "创建或编辑 Site"
+            },
+            "created": "Site {{ param }} 创建成功",
+            "updated": "Site {{ param }} 更新成功",
+            "deleted": "Site {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Site {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Site"
+            },
+            "name": "Name",
+            "homeUrl": "Home Url",
+            "remark": "Remark",
+            "extmap": "Extmap",
+            "workspace": "Workspace"
+        }
+    }
+}

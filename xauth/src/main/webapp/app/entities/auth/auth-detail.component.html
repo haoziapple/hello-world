@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="auth">
+            <h2><span jhiTranslate="xauthApp.auth.detail.title">Auth</span> {{auth.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="xauthApp.auth.name">Name</span></dt>
+                <dd>
+                    <span>{{auth.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.auth.code">Code</span></dt>
+                <dd>
+                    <span>{{auth.code}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.auth.desc">Desc</span></dt>
+                <dd>
+                    <span>{{auth.desc}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.auth.extmap">Extmap</span></dt>
+                <dd>
+                    <span>{{auth.extmap}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.auth.role">Role</span></dt>
+                <dd>
+                    <span *ngFor="let role of auth.roles; let last = last">
+                        <a [routerLink]="['/role', role?.id, 'view' ]">{{role.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.auth.template">Template</span></dt>
+                <dd>
+                    <span *ngFor="let template of auth.templates; let last = last">
+                        <a [routerLink]="['/template', template?.id, 'view' ]">{{template.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/auth', auth.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

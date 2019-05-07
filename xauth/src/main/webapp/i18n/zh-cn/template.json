@@ -1,0 +1,28 @@
+{
+    "xauthApp": {
+        "template": {
+            "home": {
+                "title": "Templates",
+                "createLabel": "创建新 Template",
+                "createOrEditLabel": "创建或编辑 Template"
+            },
+            "created": "Template {{ param }} 创建成功",
+            "updated": "Template {{ param }} 更新成功",
+            "deleted": "Template {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Template {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Template"
+            },
+            "spaceId": "Space Id",
+            "siteId": "Site Id",
+            "clientType": "Client Type",
+            "name": "Name",
+            "desc": "Desc",
+            "extmap": "Extmap",
+            "auth": "Auth",
+            "menu": "Menu"
+        }
+    }
+}

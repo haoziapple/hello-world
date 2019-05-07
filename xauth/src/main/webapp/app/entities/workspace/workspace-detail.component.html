@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="workspace">
+            <h2><span jhiTranslate="xauthApp.workspace.detail.title">Workspace</span> {{workspace.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="xauthApp.workspace.name">Name</span></dt>
+                <dd>
+                    <span>{{workspace.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.workspace.remark">Remark</span></dt>
+                <dd>
+                    <span>{{workspace.remark}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.workspace.extmap">Extmap</span></dt>
+                <dd>
+                    <span>{{workspace.extmap}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.workspace.parent">Parent</span></dt>
+                <dd>
+                    <div *ngIf="workspace.parentId">
+                        <a [routerLink]="['/workspace', workspace.parentId, 'view']">{{workspace.parentId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.workspace.site">Site</span></dt>
+                <dd>
+                    <span *ngFor="let site of workspace.sites; let last = last">
+                        <a [routerLink]="['/site', site?.id, 'view' ]">{{site.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/workspace', workspace.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

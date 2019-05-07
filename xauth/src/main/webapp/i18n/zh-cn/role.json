@@ -1,0 +1,30 @@
+{
+    "xauthApp": {
+        "role": {
+            "home": {
+                "title": "Roles",
+                "createLabel": "创建新 Role",
+                "createOrEditLabel": "创建或编辑 Role"
+            },
+            "created": "Role {{ param }} 创建成功",
+            "updated": "Role {{ param }} 更新成功",
+            "deleted": "Role {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Role {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Role"
+            },
+            "spaceId": "Space Id",
+            "siteId": "Site Id",
+            "clientType": "Client Type",
+            "name": "Name",
+            "remark": "Remark",
+            "extmap": "Extmap",
+            "roleType": "Role Type",
+            "auth": "Auth",
+            "menu": "Menu",
+            "profile": "Profile"
+        }
+    }
+}

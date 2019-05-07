@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="department">
+            <h2><span jhiTranslate="xauthApp.department.detail.title">Department</span> {{department.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="xauthApp.department.name">Name</span></dt>
+                <dd>
+                    <span>{{department.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.department.code">Code</span></dt>
+                <dd>
+                    <span>{{department.code}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.department.seq">Seq</span></dt>
+                <dd>
+                    <span>{{department.seq}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.department.leaf">Leaf</span></dt>
+                <dd>
+                    <span>{{department.leaf}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.department.remark">Remark</span></dt>
+                <dd>
+                    <span>{{department.remark}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.department.extMap">Ext Map</span></dt>
+                <dd>
+                    <span>{{department.extMap}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.department.workspace">Workspace</span></dt>
+                <dd>
+                    <div *ngIf="department.workspaceId">
+                        <a [routerLink]="['/workspace', department.workspaceId, 'view']">{{department.workspaceId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.department.parent">Parent</span></dt>
+                <dd>
+                    <div *ngIf="department.parentId">
+                        <a [routerLink]="['/department', department.parentId, 'view']">{{department.parentId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/department', department.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

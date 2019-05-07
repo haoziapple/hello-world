@@ -1,0 +1,99 @@
+enum Sex {
+	MALE,FEMALE
+}
+enum RoleType {
+	SYSTEM_ADMIN,ADMIN,USER
+}
+enum ClientType {
+	PC,APP,WECHAT
+}
+
+entity Profile {
+	name String
+	loginName String
+	password String
+	mobile String
+	email String
+	sex Sex
+	locked Boolean
+	remark String
+	extMap String
+}
+entity Department {
+	name String
+	code String
+	seq Integer
+	leaf Boolean
+	remark String
+	extMap String
+}
+entity Workspace {
+	name String
+	remark String
+	extmap String
+}
+
+entity Site {
+	name String
+	homeUrl String
+	remark String
+	extmap String
+}
+entity Role {
+	spaceId Integer
+	siteId Integer
+	name String
+	remark String
+	extmap String
+	roleType RoleType
+}
+entity Menu {
+	name String
+	code String
+	seq Integer
+	state String
+	url String
+	leaf Boolean
+	showFlag Boolean
+	extmap String
+	clientType ClientType
+}
+entity Auth {
+	name String
+	code String
+	desc String
+	extmap String
+}
+entity Template {
+	spaceId Integer
+	siteId Integer
+	name String
+	desc String
+	extmap String
+}
+
+relationship ManyToOne {
+  Profile{workspace} to Workspace
+  Department{workspace} to Workspace
+
+  Menu{parent} to Menu
+  Department{parent} to Department
+  Workspace{parent} to Workspace
+}
+
+
+relationship ManyToMany {
+  Profile{department} to Department{profile}
+  Workspace{site} to Site{workspace}
+  Auth{role} to Role{auth}
+  Menu{role} to Role{menu}
+  Auth{template} to Template{auth}
+  Menu{template} to Template{menu}
+  Profile{role} to Role{profile}
+  Menu{auth} to Auth{menu}
+}
+
+dto * with mapstruct
+service * with serviceClass
+filter *
+paginate * with pagination

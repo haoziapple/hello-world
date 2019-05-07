@@ -1,0 +1,82 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="xauthApp.menu.home.title">Menus</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-menu" [routerLink]="['/menu/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="xauthApp.menu.home.createLabel">
+            Create new Menu
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="menus">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="name"><span jhiTranslate="xauthApp.menu.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="code"><span jhiTranslate="xauthApp.menu.code">Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="seq"><span jhiTranslate="xauthApp.menu.seq">Seq</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="state"><span jhiTranslate="xauthApp.menu.state">State</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="url"><span jhiTranslate="xauthApp.menu.url">Url</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="leaf"><span jhiTranslate="xauthApp.menu.leaf">Leaf</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="showFlag"><span jhiTranslate="xauthApp.menu.showFlag">Show Flag</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="extmap"><span jhiTranslate="xauthApp.menu.extmap">Extmap</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="parentId"><span jhiTranslate="xauthApp.menu.parent">Parent</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let menu of menus ;trackBy: trackId">
+                <td><a [routerLink]="['/menu', menu.id, 'view' ]">{{menu.id}}</a></td>
+                <td>{{menu.name}}</td>
+                <td>{{menu.code}}</td>
+                <td>{{menu.seq}}</td>
+                <td>{{menu.state}}</td>
+                <td>{{menu.url}}</td>
+                <td>{{menu.leaf}}</td>
+                <td>{{menu.showFlag}}</td>
+                <td>{{menu.extmap}}</td>
+                <td>
+                    <div *ngIf="menu.parentId">
+                        <a [routerLink]="['../menu', menu.parentId , 'view' ]" >{{menu.parentId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/menu', menu.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/menu', menu.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'menu', { outlets: { popup: menu.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="menus && menus.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-template-heading" jhiTranslate="xauthApp.template.home.createOrEditLabel">Create or edit a Template</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!template.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="template.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="xauthApp.template.spaceId" for="field_spaceId">Space Id</label>
+                    <input type="number" class="form-control" name="spaceId" id="field_spaceId"
+                        [(ngModel)]="template.spaceId" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="xauthApp.template.siteId" for="field_siteId">Site Id</label>
+                    <input type="number" class="form-control" name="siteId" id="field_siteId"
+                        [(ngModel)]="template.siteId" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="xauthApp.template.clientType" for="field_clientType">Client Type</label>
+                    <select class="form-control" name="clientType" [(ngModel)]="template.clientType" id="field_clientType" >
+                        <option value="PC">{{'xauthApp.ClientType.PC' | translate}}</option>
+                        <option value="APP">{{'xauthApp.ClientType.APP' | translate}}</option>
+                        <option value="WECHAT">{{'xauthApp.ClientType.WECHAT' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="xauthApp.template.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="template.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="xauthApp.template.desc" for="field_desc">Desc</label>
+                    <input type="text" class="form-control" name="desc" id="field_desc"
+                        [(ngModel)]="template.desc" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="xauthApp.template.extmap" for="field_extmap">Extmap</label>
+                    <input type="text" class="form-control" name="extmap" id="field_extmap"
+                        [(ngModel)]="template.extmap" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

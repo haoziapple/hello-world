@@ -1,0 +1,77 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="profile">
+            <h2><span jhiTranslate="xauthApp.profile.detail.title">Profile</span> {{profile.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="xauthApp.profile.name">Name</span></dt>
+                <dd>
+                    <span>{{profile.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.profile.loginName">Login Name</span></dt>
+                <dd>
+                    <span>{{profile.loginName}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.profile.password">Password</span></dt>
+                <dd>
+                    <span>{{profile.password}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.profile.mobile">Mobile</span></dt>
+                <dd>
+                    <span>{{profile.mobile}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.profile.email">Email</span></dt>
+                <dd>
+                    <span>{{profile.email}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.profile.sex">Sex</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'xauthApp.Sex.' + profile.sex}}">{{profile.sex}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.profile.locked">Locked</span></dt>
+                <dd>
+                    <span>{{profile.locked}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.profile.remark">Remark</span></dt>
+                <dd>
+                    <span>{{profile.remark}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.profile.extMap">Ext Map</span></dt>
+                <dd>
+                    <span>{{profile.extMap}}</span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.profile.workspace">Workspace</span></dt>
+                <dd>
+                    <div *ngIf="profile.workspaceId">
+                        <a [routerLink]="['/workspace', profile.workspaceId, 'view']">{{profile.workspaceId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.profile.department">Department</span></dt>
+                <dd>
+                    <span *ngFor="let department of profile.departments; let last = last">
+                        <a [routerLink]="['/department', department?.id, 'view' ]">{{department.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="xauthApp.profile.role">Role</span></dt>
+                <dd>
+                    <span *ngFor="let role of profile.roles; let last = last">
+                        <a [routerLink]="['/role', role?.id, 'view' ]">{{role.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/profile', profile.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

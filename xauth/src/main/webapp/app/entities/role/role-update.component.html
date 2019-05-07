@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-role-heading" jhiTranslate="xauthApp.role.home.createOrEditLabel">Create or edit a Role</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!role.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="role.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="xauthApp.role.spaceId" for="field_spaceId">Space Id</label>
+                    <input type="number" class="form-control" name="spaceId" id="field_spaceId"
+                        [(ngModel)]="role.spaceId" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="xauthApp.role.siteId" for="field_siteId">Site Id</label>
+                    <input type="number" class="form-control" name="siteId" id="field_siteId"
+                        [(ngModel)]="role.siteId" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="xauthApp.role.clientType" for="field_clientType">Client Type</label>
+                    <select class="form-control" name="clientType" [(ngModel)]="role.clientType" id="field_clientType" >
+                        <option value="PC">{{'xauthApp.ClientType.PC' | translate}}</option>
+                        <option value="APP">{{'xauthApp.ClientType.APP' | translate}}</option>
+                        <option value="WECHAT">{{'xauthApp.ClientType.WECHAT' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="xauthApp.role.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="role.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="xauthApp.role.remark" for="field_remark">Remark</label>
+                    <input type="text" class="form-control" name="remark" id="field_remark"
+                        [(ngModel)]="role.remark" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="xauthApp.role.extmap" for="field_extmap">Extmap</label>
+                    <input type="text" class="form-control" name="extmap" id="field_extmap"
+                        [(ngModel)]="role.extmap" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="xauthApp.role.roleType" for="field_roleType">Role Type</label>
+                    <select class="form-control" name="roleType" [(ngModel)]="role.roleType" id="field_roleType" >
+                        <option value="SYSTEM_ADMIN">{{'xauthApp.RoleType.SYSTEM_ADMIN' | translate}}</option>
+                        <option value="ADMIN">{{'xauthApp.RoleType.ADMIN' | translate}}</option>
+                        <option value="USER">{{'xauthApp.RoleType.USER' | translate}}</option>
+                    </select>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

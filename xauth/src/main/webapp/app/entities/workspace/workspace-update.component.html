@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-workspace-heading" jhiTranslate="xauthApp.workspace.home.createOrEditLabel">Create or edit a Workspace</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!workspace.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="workspace.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="xauthApp.workspace.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="workspace.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="xauthApp.workspace.remark" for="field_remark">Remark</label>
+                    <input type="text" class="form-control" name="remark" id="field_remark"
+                        [(ngModel)]="workspace.remark" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="xauthApp.workspace.extmap" for="field_extmap">Extmap</label>
+                    <input type="text" class="form-control" name="extmap" id="field_extmap"
+                        [(ngModel)]="workspace.extmap" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="xauthApp.workspace.parent" for="field_parent">Parent</label>
+                    <select class="form-control" id="field_parent" name="parent" [(ngModel)]="workspace.parentId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="workspaceOption.id" *ngFor="let workspaceOption of workspaces; trackBy: trackWorkspaceById">{{workspaceOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="xauthApp.workspace.site" for="field_site">Site</label>
+                    <select class="form-control" id="field_site" multiple name="site" [(ngModel)]="workspace.sites">
+                        <option [ngValue]="getSelected(workspace.sites, siteOption)" *ngFor="let siteOption of sites; trackBy: trackSiteById">{{siteOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
