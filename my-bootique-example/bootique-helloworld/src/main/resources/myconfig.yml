@@ -1,0 +1,23 @@
+jetty:
+  context: /hello
+  connectors:
+  - port: 10001
+
+log:
+  level: debug
+  appenders:
+  - type: console
+    logFormat: '%d{yyyy-MM-dd HH:mm:ss.SSS}|%thread|%-5level|%logger|%m%n'
+
+
+
+my:
+  intProperty: 55
+  stringProperty: 'Hello, world!'
+
+
+
+#  启动命令: --server --config=bootique-helloworld/src/main/resources/myconfig.yml
+
+# Tracing Bootique Startup
+# -Dbq.trace
