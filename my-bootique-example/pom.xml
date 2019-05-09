@@ -17,6 +17,7 @@
 	<version>0.0.1</version>
 	<modules>
 		<module>bootique-helloworld</module>
+		<module>guice-helloworld</module>
 	</modules>
 	<name>my bootique examples</name>
 
