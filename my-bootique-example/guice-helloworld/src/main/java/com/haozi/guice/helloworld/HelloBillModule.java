@@ -24,5 +24,18 @@ public class HelloBillModule {
          */
         BillService billService = injector.getInstance(BillService.class);
         System.out.println(billService.takeOrder());
+
+        /**
+         * getInstance方法每次会返回一个不同的实例
+         */
+        ServiceA serviceA = injector.getInstance(ServiceA.class);
+        serviceA.print();
+
+        ServiceA serviceB = injector.getInstance(ServiceA.class);
+        System.out.println(serviceA == serviceB);
+
+        System.out.println(injector.getAllBindings());
+
+        System.out.println(injector.getBindings());
     }
 }
