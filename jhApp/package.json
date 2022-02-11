@@ -42,7 +42,7 @@
     "gulp-uglify": "2.0.0",
     "gulp-useref": "3.1.2",
     "jasmine-core": "2.5.0",
-    "karma": "1.7.1",
+    "karma": "6.3.14",
     "karma-chrome-launcher": "2.2.0",
     "karma-coverage": "1.1.1",
     "karma-jasmine": "1.1.0",
