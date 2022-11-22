@@ -10,7 +10,7 @@
   ],
   "devDependencies": {
     "bower": "1.7.9",
-    "browser-sync": "2.17.0",
+    "browser-sync": "2.27.10",
     "del": "2.2.2",
     "eslint-config-angular": "0.5.0",
     "eslint-plugin-angular": "2.2.1",
@@ -42,7 +42,7 @@
     "gulp-uglify": "2.0.0",
     "gulp-useref": "3.1.2",
     "jasmine-core": "2.5.0",
-    "karma": "1.7.1",
+    "karma": "6.4.1",
     "karma-chrome-launcher": "2.2.0",
     "karma-coverage": "1.1.1",
     "karma-jasmine": "1.1.0",
